@@ -10,7 +10,6 @@ class HomeController < ApplicationController
   def allot_a_slot
     vehicle = Vehicle.find_or_create_by(registration_number: params[:vehicle_registration_number])
     redirect_to(home_book_slot_path) if already_booked(vehicle)
-    binding.pry
     entry_point_location = EntryPoint.find(params[:entry_point_id]).location.position
     slot_location = get_closest_lot_location(get_all_vacant_slots_locations, entry_point_location)
     slot_id = Location.find_by_position(slot_location).locatable_id
