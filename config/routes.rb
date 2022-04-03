@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/book_slot'
   get 'home/show_logs'
+  post 'home/allot_a_slot'
   resources :slots
   resources :vehicles
   resources :entry_points

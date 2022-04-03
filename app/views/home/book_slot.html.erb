@@ -1,2 +1,8 @@
 <h1>Home#book_slot</h1>
 <p>Find me in app/views/home/book_slot.html.erb</p>
+<%= form_with url: home_allot_a_slot_path, method: :post do |form| %>
+  <%= form.label :vehicle_registration_number, "Vehicle Registration Number" %>
+  <%= form.text_field :vehicle_registration_number %>
+  <%= form.select :entry_point_id, options_for_select(@entry_points.collect{ |entry| [entry.point, entry.id] })%>
+  <%= form.submit "Alot a Slot" %>
+<% end %>

@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_03_162119) do
+ActiveRecord::Schema.define(version: 2022_04_03_193936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booking_details", force: :cascade do |t|
+    t.bigint "vehicle_id", null: false
+    t.bigint "entry_point_id", null: false
+    t.bigint "slot_id", null: false
+    t.datetime "booked_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["entry_point_id"], name: "index_booking_details_on_entry_point_id"
+    t.index ["slot_id"], name: "index_booking_details_on_slot_id"
+    t.index ["vehicle_id"], name: "index_booking_details_on_vehicle_id"
+  end
 
   create_table "booking_logs", force: :cascade do |t|
     t.bigint "slot_id", null: false
@@ -51,5 +63,8 @@ ActiveRecord::Schema.define(version: 2022_04_03_162119) do
     t.index ["registration_number"], name: "index_vehicles_on_registration_number", unique: true
   end
 
+  add_foreign_key "booking_details", "entry_points"
+  add_foreign_key "booking_details", "slots"
+  add_foreign_key "booking_details", "vehicles"
   add_foreign_key "booking_logs", "vehicles"
 end

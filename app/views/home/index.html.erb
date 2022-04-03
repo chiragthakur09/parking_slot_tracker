@@ -1,16 +1,24 @@
-<div class="container w-50">
-    <h1>Home#index</h1>
-    <p>Find me in app/views/home/index.html.erb</p>
-    <div class="row">
-        <div data-controller="drag" data-drag-url="/locations/:id/move">
-            <% @locations.each do |location|%>
-            <div class="m-1 col-3"data-id="<%= location.id %>">
-                <% type = (location.locatable_type == "EntryPoint") ? "btn-secondary": "btn-info" %>
-                <button type="button" class="btn <%= type %> btn-block">
-                    <%= location.locatable_type %> <br/>Located at <span class="badge bg-secondary"><%= location.position %></span>
-                </button>        
+<div class="row text-center">
+    <div class="col-3">
+        <h1>Parking Lot Map</h1>
+        <p>Cards in Grey Indicates Entry Points <span class="badge bg-secondary">Entry Point</span></p>
+        <p>Cards in Blue Indicates a vacant slot<span class="badge bg-info">Vacant Slot</span></p>
+        <p>Cards in Red Indicates a Booked Slot<span class="badge bg-danger">Booked Slot</span></p>
+    </div>
+    <div class="col">
+        <div class="container w-50">
+            <div class="row">
+                <div data-controller="drag" data-drag-url="/locations/:id/move">
+                    <% @locations.each do |location|%>
+                    <div class="m-1 col-3"data-id="<%= location.id %>">
+                        <% type = (location.locatable_type == "EntryPoint") ? "btn-secondary": Slot.find(location.locatable_id).booked? ? "btn-danger" : "btn-info" %>
+                        <button type="button" class="btn <%= type %> btn-block">
+                            <%= location.locatable_type %> <br/>Located at <span class="badge bg-secondary"><%= location.position %></span>
+                        </button>        
+                    </div>
+                    <% end %>
+                </div>
             </div>
-            <% end %>
         </div>
     </div>
 </div>

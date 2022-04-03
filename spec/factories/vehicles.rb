@@ -11,6 +11,13 @@
 #
 #  index_vehicles_on_registration_number  (registration_number) UNIQUE
 #
-class Vehicle < ApplicationRecord
-    validates :registration_number, presence: true, format: { with: /\A(?<State>\D{2})\-(?<District>\d{1,2})\-(?<series>\D{1,2})-(?<number>\d{1,4})/i }
+FactoryBot.define do
+  
+  factory :vehicle do
+    registration_number {"AL-22-XL-2020"}    
+  end
+
+  factory :invalid_vehicle, class: Vehicle do
+    registration_number {"L-22-XL-2020"}    
+  end
 end
