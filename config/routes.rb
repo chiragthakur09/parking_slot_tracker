@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :slots
-  resources :booking_logs
   resources :vehicles
   resources :entry_points
   resources :locations
