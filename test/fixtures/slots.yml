@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: slots
+#
+#  id         :bigint           not null, primary key
+#  slot       :integer
+#  status     :enum
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_slots_on_slot  (slot) UNIQUE
+#
+
+one:
+  slot: 1
+  location: one
+
+two:
+  slot: 1
+  location: two

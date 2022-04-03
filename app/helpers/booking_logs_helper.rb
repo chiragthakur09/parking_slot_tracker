@@ -1,0 +1,2 @@
+module BookingLogsHelper
+end

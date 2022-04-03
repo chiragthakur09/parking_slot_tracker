@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Slot:</strong>
+  <%= @booking_log.slot_id %>
+</p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @booking_log.vehicle_id %>
+</p>
+
+<%= link_to 'Edit', edit_booking_log_path(@booking_log) %> |
+<%= link_to 'Back', booking_logs_path %>

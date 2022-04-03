@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @entry_point.point %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @entry_point.location_id %>
+</p>
+
+<%= link_to 'Edit', edit_entry_point_path(@entry_point) %> |
+<%= link_to 'Back', entry_points_path %>
