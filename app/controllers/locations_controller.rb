@@ -10,6 +10,12 @@ class LocationsController < ApplicationController
   def show
   end
 
+  def move
+    @location = Location.find(params[:id])
+    @location.insert_at(params[:location].to_i)
+    head :ok
+  end
+
   # GET /locations/new
   def new
     @location = Location.new

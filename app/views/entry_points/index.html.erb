@@ -15,7 +15,7 @@
     <% @entry_points.each do |entry_point| %>
       <tr>
         <td><%= entry_point.point %></td>
-        <td><%= entry_point.location_id %></td>
+        <td><%#= entry_point.location_id %></td>
         <td><%= link_to 'Show', entry_point %></td>
         <td><%= link_to 'Edit', edit_entry_point_path(entry_point) %></td>
         <td><%= link_to 'Destroy', entry_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>

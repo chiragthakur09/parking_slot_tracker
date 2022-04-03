@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'acts_as_list'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -43,6 +44,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
   gem 'annotate', '~> 3'
+  gem 'pry'
 end
 
 group :test do

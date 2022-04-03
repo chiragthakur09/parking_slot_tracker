@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_03_150313) do
+ActiveRecord::Schema.define(version: 2022_04_03_162119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2022_04_03_150313) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "locatable_type"
     t.bigint "locatable_id"
+    t.integer "location"
+    t.integer "position"
     t.index ["locatable_type", "locatable_id"], name: "index_locations_on_locatable_type_and_locatable_id"
   end
 

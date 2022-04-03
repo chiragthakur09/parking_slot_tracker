@@ -1,0 +1,16 @@
+<div class="container w-50">
+    <h1>Home#index</h1>
+    <p>Find me in app/views/home/index.html.erb</p>
+    <div class="row">
+        <div data-controller="drag" data-drag-url="/locations/:id/move">
+            <% @locations.each do |location|%>
+            <div class="m-1 col-3"data-id="<%= location.id %>">
+                <% type = (location.locatable_type == "EntryPoint") ? "btn-secondary": "btn-info" %>
+                <button type="button" class="btn <%= type %> btn-block">
+                    <%= location.locatable_type %> <br/>Located at <span class="badge bg-secondary"><%= location.position %></span>
+                </button>        
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,8 @@
 #
 #  id             :bigint           not null, primary key
 #  locatable_type :string
+#  location       :integer
+#  position       :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  locatable_id   :bigint
@@ -14,4 +16,5 @@
 #
 class Location < ApplicationRecord
     belongs_to :locatable, polymorphic: true
+    acts_as_list
 end
