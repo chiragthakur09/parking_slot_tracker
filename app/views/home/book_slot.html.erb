@@ -1,8 +1,20 @@
-<h1>Home#book_slot</h1>
-<p>Find me in app/views/home/book_slot.html.erb</p>
-<%= form_with url: home_allot_a_slot_path, method: :post do |form| %>
-  <%= form.label :vehicle_registration_number, "Vehicle Registration Number" %>
-  <%= form.text_field :vehicle_registration_number %>
-  <%= form.select :entry_point_id, options_for_select(@entry_points.collect{ |entry| [entry.point, entry.id] })%>
-  <%= form.submit "Alot a Slot" %>
-<% end %>
+<div class="container w-50">
+    <h1>Home#book_slot</h1>
+    <p>Find me in app/views/home/book_slot.html.erb</p>
+    <div class="container w-50">
+        <%= form_with url: home_allot_a_slot_path, method: :post do |form| %>
+            <div class="form-group m-1">
+                <%= form.label :vehicle_registration_number, "Vehicle Registration Number", class: "form-label" %>
+            </div>
+            <div class="form-group m-1">
+                <%= form.text_field :vehicle_registration_number, class: "form-control", placeholder: 'AA-99-AA-9999' %>
+            </div>
+            <div class="form-group m-1">
+                <%= form.select :entry_point_id, options_for_select(@entry_points.collect{ |entry| ["Entry Point at #{entry.point}", entry.id] }), {},{:class => "form-select"}%>
+            </div>
+            <div class="form-group m-1 text-end">
+                <%= form.submit "Alot a Slot", class: "btn btn-primary" %>
+            </div>
+        <% end %>    
+    </div>
+</div>

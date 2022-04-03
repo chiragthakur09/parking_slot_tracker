@@ -1,0 +1,16 @@
+<div class="container w-50">
+    <p id="notice"><%= notice %></p>
+
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><strong>Booking Details:</strong></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= @booking_detail.vehicle.registration_number %></h6>
+        <p class="card-text"> Got alloted <br/>
+        Slot Number: <%= @booking_detail.slot.slot %><br/>
+        Location at: <%= @booking_detail.slot.location.position %>
+        </p>
+        <%= link_to 'Book Another', home_book_slot_path,class: "card-link" %>
+        <%= link_to 'Back', home_index_path,class: "card-link" %>
+    </div>
+    </div>
+</div>
