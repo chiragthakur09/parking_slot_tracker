@@ -9,7 +9,6 @@ class HomeController < ApplicationController
   end
 
   def allot_a_slot
-    binding.pry
     vehicle = Vehicle.find_or_create_by(registration_number: params[:vehicle_registration_number])
     entry_point_location = EntryPoint.find(params[:entry_point_id]).location.position
     slot_location = get_closest_lot_location(get_all_vacant_slots_locations, entry_point_location)
@@ -30,7 +29,6 @@ class HomeController < ApplicationController
   end
   
   def show_logs
-    binding.pry
     @booking_details = BookingDetail.all
   end
 
