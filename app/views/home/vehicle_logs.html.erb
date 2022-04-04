@@ -1,12 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Registration number:</strong>
-  <%= @vehicle.registration_number %>
-</p>
-
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'Back', vehicles_path %>
 <div class="container w-50">
     <h1>Booking logs</h1>
     <table class="table">
@@ -19,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <% @BookingDetails.each do |booking_detail|%>
+            <% @booking_details.each do |booking_detail|%>
                 <tr>
                     <td><%= booking_detail.vehicle.registration_number%></td>
                     <td><%= booking_detail.slot.slot%></td>

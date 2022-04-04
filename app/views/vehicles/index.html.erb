@@ -1,27 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Vehicles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Registration number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vehicles.each do |vehicle| %>
-      <tr>
-        <td><%= vehicle.registration_number %></td>
-        <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Vehicle', new_vehicle_path %>
+<div class="container w-50">
+    <h1>Booking logs</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>vehicle_registration_number</th>
+                <th>Slot Number</th>
+                <th>Entry Point Number</th>
+                <th>Booked At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @BookingDetails.each do |booking_detail|%>
+                <tr>
+                    <td><%= booking_detail.vehicle.registration_number%></td>
+                    <td><%= booking_detail.slot.slot%></td>
+                    <td><%= booking_detail.entry_point.point%></td>
+                    <td><%= raw booking_detail.booked_at.strftime("%d/%m/%Y <br/> %I:%M %p")%></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

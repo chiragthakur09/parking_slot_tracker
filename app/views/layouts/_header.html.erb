@@ -24,6 +24,10 @@
         <% end %>
 
         <%= content_tag :li, class: "nav-item"  do -%>
+            <%= link_to "Show Vehicle History", home_vehicle_history_path, class: "nav-link"%>
+        <% end %>
+
+        <%= content_tag :li, class: "nav-item"  do -%>
             <%= link_to "Reset Whole App", home_reset_whole_app_path, class: "nav-link"%>
         <% end %>
 
