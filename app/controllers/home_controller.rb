@@ -9,7 +9,10 @@ class HomeController < ApplicationController
 
   def allot_a_slot
     vehicle = Vehicle.find_or_create_by(registration_number: params[:vehicle_registration_number])
-    redirect_to(home_book_slot_path) if already_booked(vehicle)
+    if already_booked(vehicle)
+      @notice = "Already Booked..!"
+      return redirect_to(home_book_slot_path(notice: @notice)) 
+    end
     entry_point_location = EntryPoint.find(params[:entry_point_id]).location.position
     slot_location = get_closest_lot_location(get_all_vacant_slots_locations, entry_point_location)
     slot_id = Location.find_by_position(slot_location).locatable_id
@@ -72,9 +75,18 @@ class HomeController < ApplicationController
   end
   
   private
+
   def get_closest_lot_location(all_slots_locations, entry_point_location)
     return nil if all_slots_locations.empty?
-    all_slots_locations.min_by  { |e| e <= entry_point_location ? [0, entry_point_location-e] : [1, e-entry_point_location] }
+    near_1 = all_slots_locations.min_by  { |e| e <= entry_point_location ? [0, entry_point_location-e] : [1, e-entry_point_location] }
+    if entry_point_location < near_1
+      near_1 = all_slots_locations.min_by  { |e| e <= entry_point_location ? [0, entry_point_location-e] : [1, e-entry_point_location] }
+    else
+      near_2 = all_slots_locations.max_by  { |e| e <= entry_point_location ? [0, e-entry_point_location] : [1, entry_point_location-e] }
+    end
+    return near_1 if (entry_point_location - near_1) < (near_2 - entry_point_location)
+    return near_2 if (entry_point_location - near_1) > (near_2 - entry_point_location)
+    near_2
   end
 
   def get_all_vacant_slots_locations
@@ -82,7 +94,7 @@ class HomeController < ApplicationController
   end
 
   def already_booked(vehicle)
-    #return BookingDetail.exists?(vehicle_id: vehicle.id,booked_at: Date.today.all_day)
-    BookingDetail.exists?(vehicle_id: vehicle.id,booked_at: Date.today.prev_day.all_day)
+    return BookingDetail.exists?(vehicle_id: vehicle.id,booked_at: Date.today.all_day)
+    #BookingDetail.exists?(vehicle_id: vehicle.id,booked_at: Date.today.prev_day.all_day)
   end
 end

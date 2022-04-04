@@ -1,7 +1,6 @@
 <div class="container w-50">
-    <h1>Home#book_slot</h1>
-    <p>Find me in app/views/home/book_slot.html.erb</p>
     <div class="container w-50">
+    <p class="text-danger"><%= params[:notice] if params[:notice].present? %></p>
         <%= form_with url: home_allot_a_slot_path, method: :post do |form| %>
             <div class="form-group m-1">
                 <%= form.label :vehicle_registration_number, "Vehicle Registration Number", class: "form-label" %>
