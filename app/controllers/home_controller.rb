@@ -59,8 +59,6 @@ class HomeController < ApplicationController
 
   def vehicle_history
     @vehicle = Vehicle.all
-    vehicle = Vehicle.find_by_registration_number("AA-43-LK-4")
-    @booking_details = BookingDetail.where(vehicle_id: vehicle.id)
   end
 
   def show_by_vehicle
