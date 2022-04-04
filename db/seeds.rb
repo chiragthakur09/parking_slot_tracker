@@ -9,6 +9,7 @@ BookingDetail.all.destroy_all
 Slot.all.destroy_all
 EntryPoint.all.destroy_all
 Location.all.destroy_all
+Vehicle.all.destroy_all
 # (1..1000).to_a.each do |record_item|
 #     if (record_item % 250 != 0)
 #         Slot.create(slot: record_item)

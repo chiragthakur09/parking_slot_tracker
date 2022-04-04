@@ -42,6 +42,7 @@ class HomeController < ApplicationController
     Slot.all.destroy_all
     EntryPoint.all.destroy_all
     Location.all.destroy_all
+    Vehicle.all.destroy_all
     (1..20).to_a.each do |record_item|
         if (record_item % 5 != 0)
             Slot.create(slot: record_item)
@@ -86,7 +87,7 @@ class HomeController < ApplicationController
     end
     return near_1 if (entry_point_location - near_1) < (near_2 - entry_point_location)
     return near_2 if (entry_point_location - near_1) > (near_2 - entry_point_location)
-    near_2
+    [near_1,near_2].sample
   end
 
   def get_all_vacant_slots_locations
