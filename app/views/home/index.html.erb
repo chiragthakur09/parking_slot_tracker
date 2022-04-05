@@ -18,13 +18,14 @@
                             <% else %>
                             <% slot = Slot.find(location.locatable_id) %>
                                 <% if slot.booked? %>
+                                    <% booked = true %>
                                     <% type = "btn-danger" %>
                                 <% else %>
                                     <% type = "btn-info" %>
                                 <% end %>
                             <% end %>
                             <%# type = (location.locatable_type == "EntryPoint") ? "btn-secondary": Slot.find(location.locatable_id).booked? ? "btn-danger" : "btn-info" %>
-                            <%= link_to (slot ? edit_slot_path(slot) : '') do %>
+                            <%= link_to (booked ? edit_slot_path(slot) : '') do %>
                                 <button type="button" class="btn <%= type %> btn-block">
                                     <%= location.locatable_type %> <br/>Located at <span class="badge bg-secondary"><%= location.position %></span>
                                 </button>

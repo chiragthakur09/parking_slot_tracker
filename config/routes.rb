@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/book_slot'
   get 'home/show_logs'
   get 'home/reset_whole_app'
+  get 'home/seed_by_1000'
   get 'home/vehicle_history' => 'home#vehicle_history', :as => 'home_vehicle_history'
   post 'home/vehicle_logs' => 'home#vehicle_logs', :as =>'home_vehicle_logs'
   get 'home/slot_history' => 'home#slot_history', :as => 'home_slot_history'

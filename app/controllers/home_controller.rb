@@ -41,10 +41,26 @@ class HomeController < ApplicationController
     BookingDetail.all.destroy_all
     Slot.all.destroy_all
     EntryPoint.all.destroy_all
-    Location.all.destroy_all
+    #Location.all.destroy_all
     Vehicle.all.destroy_all
     (1..60).to_a.each do |record_item|
         if (record_item % 15 != 0)
+            Slot.create(slot: record_item)
+        else
+            EntryPoint.create(point: record_item)
+        end
+    end
+    redirect_to home_index_path
+  end
+
+  def seed_by_1000
+    BookingDetail.all.destroy_all
+    Slot.all.destroy_all
+    EntryPoint.all.destroy_all
+    #Location.all.destroy_all
+    Vehicle.all.destroy_all
+    (1..1000).to_a.each do |record_item|
+        if (record_item % 250 != 0)
             Slot.create(slot: record_item)
         else
             EntryPoint.create(point: record_item)
