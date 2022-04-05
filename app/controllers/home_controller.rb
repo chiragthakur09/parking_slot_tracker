@@ -62,9 +62,10 @@ class HomeController < ApplicationController
   end
 
   def vehicle_history
-    @vehicle = Vehicle.all
+    @vehicles = Vehicle.all
   end
 
+  
   def show_by_vehicle
     vehicle = Vehicle.find(params["Vehicle Registration Number"])
     redirect_to home_vehicle_logs_path(vehicle_id: vehicle.id)
@@ -74,7 +75,11 @@ class HomeController < ApplicationController
     @booking_details = BookingDetail.where(vehicle_id: params["Vehicle Registration Number"])
     @booking_details = BookingDetail.all
   end
-  
+
+  def slot_history
+    @slots = Slot.all
+  end
+
   private
 
   def get_closest_lot_location(all_slots_locations, entry_point_location)

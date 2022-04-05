@@ -1,0 +1,14 @@
+<%#= select_tag "Vehicl Registration Number", %>
+<div class="container w-50">
+    <%= form_with url: slots_path, method: :get, local: true do |form| %>
+        <div class="form-group m-1 w-50">
+            <%= select_tag "Slot Number", 
+                options_from_collection_for_select(@slots, "id", "slot"), 
+                prompt: "Select something",class: "form-select"
+            %>
+            <div class="form-group m-1 text-end">
+                <%= form.submit "Show Slot History", class: "btn btn-primary" %>
+            </div>
+        </div>
+    <% end %>
+</div>

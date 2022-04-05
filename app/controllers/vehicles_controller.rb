@@ -4,7 +4,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles or /vehicles.json
   def index
     @BookingDetails =  BookingDetail.where(vehicle_id: params["Vehicle Registration Number"])
-    @vehicles = Vehicle.all
   end
 
   # GET /vehicles/1 or /vehicles/1.json

@@ -3,11 +3,11 @@
     <%= form_with url: vehicles_path, method: :get, local: true do |form| %>
         <div class="form-group m-1 w-50">
             <%= select_tag "Vehicle Registration Number", 
-                options_from_collection_for_select(@vehicle, "id", "registration_number"), 
+                options_from_collection_for_select(@vehicles, "id", "registration_number"), 
                 prompt: "Select something",class: "form-select"
             %>
             <div class="form-group m-1 text-end">
-                <%= form.submit "Alot a Slot", class: "btn btn-primary" %>
+                <%= form.submit "Show Vehicle History", class: "btn btn-primary" %>
             </div>
         </div>
     <% end %>
