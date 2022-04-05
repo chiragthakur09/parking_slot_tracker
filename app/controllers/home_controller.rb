@@ -8,7 +8,15 @@ class HomeController < ApplicationController
   end
 
   def allot_a_slot
+    if params[:vehicle_registration_number].empty?
+      @notice = "Enter Vehicle Registration Number..!"
+      return redirect_to(home_book_slot_path(notice: @notice)) 
+    end
     vehicle = Vehicle.find_or_create_by(registration_number: params[:vehicle_registration_number])
+    if vehicle.invalid?
+      @notice = "Please Enter Vehicle Registration Number in correct format for e.g. AA-99-AA-9999 format...!"
+      return redirect_to(home_book_slot_path(notice: @notice)) 
+    end
     if already_booked(vehicle)
       @notice = "Already Booked..!"
       return redirect_to(home_book_slot_path(notice: @notice)) 
