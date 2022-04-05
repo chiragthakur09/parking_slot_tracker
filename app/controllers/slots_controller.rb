@@ -37,8 +37,8 @@ class SlotsController < ApplicationController
   # PATCH/PUT /slots/1 or /slots/1.json
   def update
     respond_to do |format|
-      if @slot.update(slot_params)
-        format.html { redirect_to slot_url(@slot), notice: "Slot was successfully updated." }
+      if @slot.update(status: params[:status])
+        format.html { redirect_to home_index_path, notice: "Slot was successfully updated." }
         format.json { render :show, status: :ok, location: @slot }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class SlotsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def slot_params
-      params.require(:slot).permit(:slot)
+      params.require(:status).permit(:status)
     end
 end

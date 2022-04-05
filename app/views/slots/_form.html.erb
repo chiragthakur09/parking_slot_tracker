@@ -1,22 +1,14 @@
-<%= form_with(model: slot, local: true) do |form| %>
-  <% if slot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(slot.errors.count, "error") %> prohibited this slot from being saved:</h2>
-
-      <ul>
-        <% slot.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :slot %>
-    <%= form.number_field :slot %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="container w-50">
+<h1>Update Slot Status</h1>
+    <%= form_with(model: slot, local: true) do |form| %>
+        <div class="form-group m-1 w-50">
+            <%= select_tag "status", 
+                options_for_select(Slot.statuses.map {|s| s}), 
+                prompt: "Select something",class: "form-select"
+            %>
+            <div class="form-group m-1 text-end">
+                <%= form.submit "Update Status", class: "btn btn-primary" %>
+            </div>
+        </div>
+    <% end %>
+</div>

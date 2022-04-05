@@ -77,7 +77,7 @@ class HomeController < ApplicationController
   end
 
   def slot_history
-    @slots = Slot.all
+    @slots = Slot.all.order(updated_at: :DESC)
   end
 
   private
